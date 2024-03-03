@@ -26,8 +26,6 @@ var removeNthFromEnd = function(head, n) {
         pointer = pointer.next;
         counter--;
     }
-    console.log(pointer.val);
-    console.log(counter);
     const next = pointer.next;
     pointer.next = next?.next || null;
     return head;

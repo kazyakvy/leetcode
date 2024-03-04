@@ -5,7 +5,6 @@
  */
 var bagOfTokensScore = function(tokens, power) {
     const sorted = tokens.sort((a, b) => a - b);
-    console.log(sorted, power);
     let maxScore = 0, currentScore = 0;
     while (power >= tokens[0] || currentScore > 0) {
         if (power >= tokens[0]) {

@@ -6,18 +6,18 @@ var sortedSquares = function(nums) {
     const stack = [], result = [];
     
     for (let i = 0; i < nums.length; i++) {
-        const current = nums[i]**2;
+        const val = nums[i]**2;
         if (nums[i] < 0) {
-            stack.push(current);
+            stack.push(val);
             continue;
         }
         if (stack.length) {
-            while (stack[stack.length - 1] < current) {
+            while (stack[stack.length - 1] < val) {
                 const value = stack.pop();
                 result.push(value);
             }
         }
-        result.push(current);
+        result.push(val);
     }
     
     if (stack.length) {

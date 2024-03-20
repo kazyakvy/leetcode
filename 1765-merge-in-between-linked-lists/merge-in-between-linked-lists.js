@@ -27,7 +27,6 @@ var mergeInBetween = function(list1, a, b, list2) {
     }
     
     left.next = list2;
-    console.log(left.val, right.val);
     
     while (list2) {
         if (!list2.next) {

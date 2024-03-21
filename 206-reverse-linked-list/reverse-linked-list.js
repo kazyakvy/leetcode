@@ -10,17 +10,13 @@
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    let arr = [];
-    while (head) {
-        arr.push(head);
-        head= head.next;
+    let prev = null;
+    let curr = head;
+    while (curr !== null) {
+        let nextTemp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextTemp;
     }
-    const first = arr[arr.length - 1];
-    let pointer = first;
-    for (let i = arr.length - 2; i >= 0; i--) {
-        arr[i].next = null;
-        pointer.next = arr[i];
-        pointer = pointer.next;
-    }
-    return first || null;
+    return prev;
 };

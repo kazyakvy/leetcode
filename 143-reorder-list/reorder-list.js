@@ -12,24 +12,21 @@
 var reorderList = function(head) {
     const arr = [];
     while (head) {
-        arr.push(head);
+        const current = head;
+        arr.push(current);
         head = head.next;
+        current.next = null;
     }
-    let result = arr[0];
-    result.next = arr[arr.length - 1];
-    let pointer = result.next;
-    pointer.next = null;
-    for (let i = 1; i <= arr.length - 1 - i; i++) {
+    let result = new ListNode();
+    let pointer = result;
+    for (let i = 0; i <= arr.length - 1 - i; i++) {
         pointer.next = arr[i];
         pointer = pointer.next;
-        pointer.next = null;
         if (arr.length - 1 - i !== i) {
             arr[arr.length - 1 - i].next = null;
             pointer.next = arr[arr.length - 1 - i];
             pointer = pointer.next;
-            pointer.next = null;
         }
-        continue;
     }
-    return result;
+    return result.next;
 };

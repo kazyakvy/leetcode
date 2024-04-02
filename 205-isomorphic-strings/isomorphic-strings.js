@@ -16,6 +16,5 @@ var isIsomorphic = function(s, t) {
         }
         result += map1[t[i]];
     }
-    console.log(result);
     return result === s;
 };

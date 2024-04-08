@@ -4,16 +4,22 @@
  * @return {number}
  */
 var countStudents = function(students, sandwiches) {
-    while (
-        students.length &&
-        (!students.every(el => el === students[0]) || sandwiches[0] === students[0])
-    ) {
+    const count = [0, 0];
+    
+    while (students.length) {
         const student = students.shift();
-        if (student === sandwiches[0]) {
-            sandwiches.shift();
-            continue;
-        }
-        students.push(student);
+        count[student]++;
     }
-    return students.length;
+
+    while (sandwiches.length) {
+        console.log(count);
+        console.log(sandwiches);
+        const sandwich = sandwiches.shift();
+        if (!count[sandwich]) {
+            return sandwiches.length + 1;
+        }
+        count[sandwich]--;
+    }
+    
+    return 0;
 };

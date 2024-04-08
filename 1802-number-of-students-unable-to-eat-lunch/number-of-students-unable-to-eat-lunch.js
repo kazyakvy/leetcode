@@ -12,8 +12,6 @@ var countStudents = function(students, sandwiches) {
     }
 
     while (sandwiches.length) {
-        console.log(count);
-        console.log(sandwiches);
         const sandwich = sandwiches.shift();
         if (!count[sandwich]) {
             return sandwiches.length + 1;

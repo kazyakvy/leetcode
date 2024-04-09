@@ -5,10 +5,14 @@
  */
 var timeRequiredToBuy = function(tickets, k) {
     const val = tickets[k];
-    return tickets.reduce((acc, el, i) => {
+    let result = 0;
+    for (let i = 0; i < tickets.length; i++) {
+        const curr = tickets[i];
         if (i <= k) {
-            return acc + (el < val ? el : val);
+            result += curr < val ? curr : val;
+            continue;
         }
-        return acc + (el < val ? el : val - 1);
-    }, 0);
+        result += curr < val ? curr : val - 1;
+    }
+    return result;
 };

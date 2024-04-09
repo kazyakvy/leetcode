@@ -9,8 +9,6 @@ var timeRequiredToBuy = function(tickets, k) {
         if (i <= k) {
             return acc + (el < val ? el : val);
         }
-        if (i > k) {
-            return acc + (el < val ? el : val - 1);
-        }
+        return acc + (el < val ? el : val - 1);
     }, 0);
 };

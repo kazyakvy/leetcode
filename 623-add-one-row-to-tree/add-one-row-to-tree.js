@@ -12,8 +12,7 @@
  * @param {number} depth
  * @return {TreeNode}
  */
-var addOneRow = function(root, val, depth) {
-    const helper = (node, val, depth, currdepth) => {
+const helper = (node, val, depth, currdepth) => {
         if (depth === 1) {
             const newRoot = new TreeNode(val);
             newRoot.left = node;
@@ -45,5 +44,6 @@ var addOneRow = function(root, val, depth) {
         return node;
     };
 
+var addOneRow = function(root, val, depth) {
     return helper(root, val, depth, 1);
 };

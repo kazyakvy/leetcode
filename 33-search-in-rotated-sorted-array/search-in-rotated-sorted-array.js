@@ -3,35 +3,30 @@
  * @param {number} target
  * @return {number}
  */
-const binarySearch = (nums, target, left, right) => {
-    while (left <= right) {
-        const index = Math.floor((left + right) / 2);
-        const value = nums[index];
-        if (target === value) {
-            return index;
-        }
-        if (target < value) {
-            right = index - 1;
-            continue;
-        }
-        left = index + 1;
-    }
-    
-    return -1;
-}
-
 var search = function(nums, target) {
-    let div;
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] < nums[i - 1]) {
-            div = i;
+    let low = 0, high = nums.length - 1;
+
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        }
+
+        if (nums[low] <= nums[mid]) {
+            if (nums[low] <= target && target < nums[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        } else {
+            if (nums[mid] < target && target <= nums[high]) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
         }
     }
-    if (div === undefined) {
-        return binarySearch(nums, target, 0, nums.length - 1);
-    }
-    if (target < nums[0]) {
-        return binarySearch(nums, target, div, nums.length - 1);
-    }
-    return binarySearch(nums, target, 0, div - 1);
+
+    return -1;
 };

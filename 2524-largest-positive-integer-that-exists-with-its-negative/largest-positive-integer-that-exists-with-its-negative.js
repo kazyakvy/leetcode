@@ -3,17 +3,12 @@
  * @return {number}
  */
 var findMaxK = function(nums) {
-    const map = {};
+    const set = new Set(nums);
     let max = -1;
-    for (let i = 0; i < nums.length; i++) {
-        const num = nums[i];
-        if (-num > max && map[-num]) {
-            max = -num;
+    for (let num of set) {
+        if (set.has(-num)) {
+            max = num > max ? num : max;
         }
-        if (num > max && map[-num]) {
-            max = num;
-        }
-        map[num] = true;
     }
     return max;
 };

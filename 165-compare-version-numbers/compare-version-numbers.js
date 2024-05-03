@@ -3,10 +3,15 @@
  * @param {string} version2
  * @return {number}
  */
+/**
+ * @param {string} version1
+ * @param {string} version2
+ * @return {number}
+ */
 var compareVersion = function(version1, version2) {
     const v1 = version1.split('.');
     const v2 = version2.split('.');
-    const n = v1.length > v2.length ? v1.length : v2.length;
+    const n = Math.max(v1.length, v2.length);
 
     for (let i = 0; i < n; i++) {
         const num1 = +v1[i] || 0;

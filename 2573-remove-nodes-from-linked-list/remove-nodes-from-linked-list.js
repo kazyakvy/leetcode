@@ -20,7 +20,6 @@ var removeNodes = function(head) {
         head.next = null;
         head = temp;
     }
-    console.log(stack);
     const res = new ListNode();
     let pointer = res;
     for (let i = 0; i < stack.length; i++) {

@@ -9,7 +9,7 @@ var maximumHappinessSum = function(happiness, k) {
 
     for (let i = 0; i < k; i++) {
         const val = happiness[i] - i;
-        result += val >= 0 ? val : 0;
+        result += val > 0 ? val : 0;
     }
 
     return result;

@@ -11,15 +11,11 @@
  * @return {boolean}
  */
 var evaluateTree = function(root) {
-    const evaluate = (head) => {
-        if (head.val === 2) {
-            return evaluate(head.left) || evaluate(head.right);
-        }
-        if (head.val === 3) {
-            return evaluate(head.left) && evaluate(head.right);
-        }
-        return head.val;
-    };
-
-    return evaluate(root);
+    if (root.val === 2) {
+        return evaluateTree(root.left) || evaluateTree(root.right);
+    }
+    if (root.val === 3) {
+        return evaluateTree(root.left) && evaluateTree(root.right);
+    }
+    return root.val;
 };

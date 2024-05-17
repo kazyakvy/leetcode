@@ -11,18 +11,15 @@
  * @param {number} target
  * @return {TreeNode}
  */
-var removeLeafNodes = function(root, target, parent, direction) {
+var removeLeafNodes = function(root, target) {
     if (!root) {
         return null;
     }
 
-    removeLeafNodes(root.left, target, root, 0);
-    removeLeafNodes(root.right, target, root, 1);
+    root.left = removeLeafNodes(root.left, target);
+    root.right = removeLeafNodes(root.right, target);
 
     if (root.val === target && !root.left && !root.right) {
-        if (parent) {
-            direction ? parent.right = null : parent.left = null;
-        }
         return null;
     }
 
